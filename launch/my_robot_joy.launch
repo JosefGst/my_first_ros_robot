@@ -1,0 +1,20 @@
+<launch>
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node">
+    <param name="port" value="/dev/ttyUSB0"/>   
+  </node>
+  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_node" output="screen" />
+
+
+  <arg name="cmd_vel" default="input_joy/cmd_vel" />
+  <arg name="teleop_config" default="$(find my_first_ros_robot)/config/joystick_param.yaml" />
+
+  <rosparam file="$(arg teleop_config)" command="load" />
+  <node pkg="joy_teleop" type="joy_teleop.py" name="joy_teleop">
+    <remap from="cmd_vel" to="$(arg cmd_vel)" />
+  </node>
+
+  <group ns="torso_controller">
+    <node pkg="joy_teleop" type="incrementer_server.py" name="incrementer"/>
+  </group>
+
+</launch>

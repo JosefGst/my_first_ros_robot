@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node" required="true">
+    <param name="port" value="/dev/ttyUSB0"/>   
+  </node>
+  <node pkg="my_first_ros_robot" type="range_listener_node" name="range_listener_node" required="true"/>
+</launch>
