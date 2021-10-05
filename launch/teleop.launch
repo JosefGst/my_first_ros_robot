@@ -3,4 +3,5 @@
     <param name="port" value="/dev/ttyUSB0"/>   
   </node>
   <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_node" output="screen" />
+  <node pkg="my_first_ros_robot" type="odom_node" name="odom_node" />
 </launch>

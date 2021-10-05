@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node">
+    <param name="port" value="/dev/ttyUSB0"/>   
+  </node>
+
+  <include file="$(find teleop_twist_joy)/launch/teleop.launch" />
+
+  <node pkg="my_first_ros_robot" type="odom_node" name="odom_node" />
+
+</launch>
